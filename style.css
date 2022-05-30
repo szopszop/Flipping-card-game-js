@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: bisque;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px;
+}
+
+.game-board {
+    width: 640px;
+    height: 640px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin: auto;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.game-card {
+    height: calc(25% - 10px);
+    width: calc(16.667% - 10px);
+    position: relative;
+    border: 1px solid grey;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.card-front {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 1px solid grey;
+}
+
+.card-back {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 1px solid grey;
+}
