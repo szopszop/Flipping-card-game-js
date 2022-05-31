@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    background-color: bisque;
-}
 
 h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 80px;
+    color: #594155;
     text-align: center;
+    position: absolute;
+    top: 30px;
+    left: 31%;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
     padding: 50px;
 }
 
@@ -20,14 +27,18 @@ img {
 .game-board {
     width: 640px;
     height: 640px;
-    position: relative;
+    position: absolute;
+    top: 200px;
+    left: 33%;
+    z-index: 10;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
+    border: 15px solid #fef2fb;
     margin: auto;
-    border-radius: 5px;
-    background-color: white;
+    border-radius: 8px;
+    background: #fef2fb;
     perspective: 1000px;
+
 }
 
 .game-card {
@@ -62,4 +73,11 @@ img {
 
 .card-front {
     transform: rotateY(180deg);
+}
+
+#canvas1 {
+    background: linear-gradient(to left, rgba(231, 231, 128, 0.17), rgba(201, 119, 201, 0.64));
+    width: 100%;
+    height: 100%;
+
 }
