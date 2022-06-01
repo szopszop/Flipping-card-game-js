@@ -113,6 +113,7 @@ function backToMenu () {
     mediumBoard.classList.add("invisible")
     hardBoard.classList.add("invisible")
     score.classList.add("invisible")
+    buttonMenu.classList.add("invisible")
 }
 buttonMenu.addEventListener('click', backToMenu)
 // / function getState() {
