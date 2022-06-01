@@ -102,8 +102,10 @@ game-card:hover {
     height: 100%;
     width: 100%;
     position: absolute;
-    border: 1px solid grey;
     backface-visibility: hidden;
+    border-radius: 7px;
+    color:rgba(250, 235, 215, 0.79);
+
 }
 
 .card-front {
