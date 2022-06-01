@@ -10,111 +10,333 @@
 </head>
 <body>
     <canvas id="canvas1"></canvas>
-    <div id="menu">
+    <div id="menu" >
         <h2>Choose level of difficulty:</h2>
-        <button class="button-menu" onclick="easy()">East</button>
-        <button class="button-menu" onclick="medium()">Medium</button>
-        <button class="button-menu" onclick="hard()">Hard</button>
+        <button class="button-menu" id="button-easy">Easy</button>
+        <button class="button-menu" id="button-medium">Medium</button>
+        <button class="button-menu" id="button-hard">Hard</button>
     </div>
 
 
     <h1>MEMORY GAME</h1>
-        <section class="game-board"  style="display:none" >
-            <div class="game-card" data-framework="python">
-                <img class="card-front" src="img/python.png" alt ="Python" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+        <section class="game-board" id="game-board">
+            <div class="game-board game-board-easy invisible" id="board-easy">
+                <div class="game-card" id="e1" data-framework="python">
+                    <img class="card-front" src="img/python.png" alt ="Python" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e2" data-framework="python">
+                    <img class="card-front" src="img/python.png" alt ="Python" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e3" data-framework="bootstrap">
+                    <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e4" data-framework="bootstrap">
+                    <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e5" data-framework="codecool">
+                    <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e6" data-framework="codecool">
+                    <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e7" data-framework="css">
+                    <img class="card-front" src="img/css.png" alt ="CSS" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e8" data-framework="css">
+                    <img class="card-front" src="img/css.png" alt ="CSS" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e9" data-framework="discord">
+                    <img class="card-front" src="img/discord.png" alt ="Discord" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e10" data-framework="discord">
+                    <img class="card-front" src="img/discord.png" alt ="Discord" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e11" data-framework="google+">
+                    <img class="card-front" src="img/g+.png" alt ="Google+" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e12" data-framework="google+">
+                    <img class="card-front" src="img/g+.png" alt ="Google+" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e13" data-framework="git">
+                    <img class="card-front" src="img/git.png" alt ="Git" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e14" data-framework="git">
+                    <img class="card-front" src="img/git.png" alt ="Git" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e15" data-framework="github">
+                    <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e16" data-framework="github">
+                    <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e17" data-framework="google">
+                    <img class="card-front" src="img/google.png" alt ="Google" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="e18" data-framework="google">
+                    <img class="card-front" src="img/google.png" alt ="Google" />
+                    <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                </div>
             </div>
-            <div class="game-card" data-framework="python">
-                <img class="card-front" src="img/python.png" alt ="Python" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+            <div class="game-board game-board-medium invisible" id="board-medium">
+                    <div class="game-card" id="m1" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m2" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m3" data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m4"data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m5" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m6" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m7" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m8" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m9" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m10" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m11" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m12" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m13" data-framework="git">
+                        <img class="card-front" src="img/git.png" alt ="Git" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m14" data-framework="git">
+                        <img class="card-front" src="img/git.png" alt ="Git" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m15" data-framework="github">
+                        <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m16" data-framework="github">
+                        <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m17" data-framework="google">
+                        <img class="card-front" src="img/google.png" alt ="Google" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m18" data-framework="google">
+                        <img class="card-front" src="img/google.png" alt ="Google" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m19" data-framework="java">
+                        <img class="card-front" src="img/java.png" alt ="Java" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m20" data-framework="java">
+                        <img class="card-front" src="img/java.png" alt ="Java" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m21" data-framework="pycharm">
+                        <img class="card-front" src="img/PyCharm.png" alt ="PyCharm" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m22" data-framework="pycharm">
+                        <img class="card-front" src="img/PyCharm.png" alt ="Pycharm" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m23" data-framework="react">
+                        <img class="card-front" src="img/react.png" alt ="React" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="m24" data-framework="react">
+                        <img class="card-front" src="img/react.png" alt ="React" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
             </div>
-            <div class="game-card" data-framework="bootstrap">
-                <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" data-framework="bootstrap">
-                <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="5" data-framework="codecool">
-                <img class="card-front" src="img/codecool.png" alt ="Codecool" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="6" data-framework="codecool">
-                <img class="card-front" src="img/codecool.png" alt ="Codecool" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="7" data-framework="css">
-                <img class="card-front" src="img/css.png" alt ="CSS" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="8" data-framework="css">
-                <img class="card-front" src="img/css.png" alt ="CSS" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="9" data-framework="discord">
-                <img class="card-front" src="img/discord.png" alt ="Discord" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="10" data-framework="discord">
-                <img class="card-front" src="img/discord.png" alt ="Discord" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="11" data-framework="google+">
-                <img class="card-front" src="img/g+.png" alt ="Google+" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="12" data-framework="google+">
-                <img class="card-front" src="img/g+.png" alt ="Google+" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="13" data-framework="git">
-                <img class="card-front" src="img/git.png" alt ="Git" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="14" data-framework="git">
-                <img class="card-front" src="img/git.png" alt ="Git" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="15" data-framework="github">
-                <img class="card-front" src="img/GitHub.png" alt ="Github" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="16" data-framework="github">
-                <img class="card-front" src="img/GitHub.png" alt ="Github" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="17" data-framework="google">
-                <img class="card-front" src="img/google.png" alt ="Google" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-                <div class="game-card" id="18" data-framework="google">
-                <img class="card-front" src="img/google.png" alt ="Google" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="19" data-framework="java">
-                <img class="card-front" src="img/java.png" alt ="Java" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="20" data-framework="java">
-                <img class="card-front" src="img/java.png" alt ="Java" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="21" data-framework="pycharm">
-                <img class="card-front" src="img/PyCharm.png" alt ="PyCharm" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="22" data-framework="pycharm">
-                <img class="card-front" src="img/PyCharm.png" alt ="Pycharm" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="23" data-framework="react">
-                <img class="card-front" src="img/react.png" alt ="React" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
-            </div>
-            <div class="game-card" id="24" data-framework="react">
-                <img class="card-front" src="img/react.png" alt ="React" />
-                <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+            <div class="game-board game-board-hard invisible" id="board-hard">
+                    <div class="game-card" id="h1" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h2" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h3" data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h4" data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h5" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h6" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h7" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h8" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h9" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h10" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h11" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h12" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h13" data-framework="git">
+                        <img class="card-front" src="img/git.png" alt ="Git" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h14" data-framework="git">
+                        <img class="card-front" src="img/git.png" alt ="Git" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h15" data-framework="github">
+                        <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h16" data-framework="github">
+                        <img class="card-front" src="img/GitHub.png" alt ="Github" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h17" data-framework="google">
+                        <img class="card-front" src="img/google.png" alt ="Google" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" hid="18" data-framework="google">
+                        <img class="card-front" src="img/google.png" alt ="Google" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h19" data-framework="java">
+                        <img class="card-front" src="img/java.png" alt ="Java" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h20" data-framework="java">
+                        <img class="card-front" src="img/java.png" alt ="Java" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h21" data-framework="pycharm">
+                        <img class="card-front" src="img/PyCharm.png" alt ="PyCharm" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h22" data-framework="pycharm">
+                        <img class="card-front" src="img/PyCharm.png" alt ="Pycharm" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h23" data-framework="react">
+                        <img class="card-front" src="img/react.png" alt ="React" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h24" data-framework="react">
+                        <img class="card-front" src="img/react.png" alt ="React" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h25" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h26" data-framework="python">
+                        <img class="card-front" src="img/python.png" alt ="Python" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h27" data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card"  id="h28" data-framework="bootstrap">
+                        <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h29" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h30" data-framework="codecool">
+                        <img class="card-front" src="img/codecool.png" alt ="Codecool" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h31" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h32" data-framework="css">
+                        <img class="card-front" src="img/css.png" alt ="CSS" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h33" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h34" data-framework="discord">
+                        <img class="card-front" src="img/discord.png" alt ="Discord" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h35" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
+                    <div class="game-card" id="h36" data-framework="google+">
+                        <img class="card-front" src="img/g+.png" alt ="Google+" />
+                        <img class="card-back" src="img/JS-logo.png" alt="Backed Card" />
+                    </div>
             </div>
         </section>
     <script type="module" src="game.js"></script>

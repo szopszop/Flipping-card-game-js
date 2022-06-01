@@ -131,3 +131,7 @@ img {
     padding-right:  10px;
 
 }
+
+.invisible {
+    display: none;
+}
