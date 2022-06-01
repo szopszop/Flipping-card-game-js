@@ -11,6 +11,7 @@ let hasFlipped = false;
 let blockBoard = false;
 let firstCard, secondCard;
 
+
 function flipCard() {
     if (blockBoard) return;
     if (this===firstCard) return;
