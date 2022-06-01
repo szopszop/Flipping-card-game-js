@@ -11,19 +11,18 @@
     box-sizing: border-box;
 }
 
-
-h1, #start, #finish {
+h1 {
     font-family: 'Fredoka One', cursive;
     font-size: 80px;
     color: #594155;
-    text-align: center;
+    /*text-align: center;*/
     position: absolute;
-    top: 30px;
-    left: 31%;
+    top: 50px;
+    left: 35%;
     z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 50px;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*padding: 50px;*/
 }
 h5{
     font-family: 'Fredoka One', cursive;
@@ -35,7 +34,7 @@ img {
     width: 100px;
 }
 .game-board {
-    top: 200px;
+    /*top: 20px;*/
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -43,10 +42,12 @@ img {
     align-items: center;
     column-gap: 5px;
     row-gap: 5px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin: auto;
-    border-radius: 8px;
-    background: hsla(303, 69%, 95%, 0.42);
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.508);
+    box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.508);;
+    cursor: pointer;
     perspective: 1000px;
 
 }
@@ -55,12 +56,19 @@ img {
     height: 90px;
     width: 90px;
     position: relative;
-    border: 1px solid grey;
+    border: 1px solid rgba(135, 122, 122, 0.443);
+    box-shadow:1px 1px 2px 1px #bfacbc87;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 7px;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform.5s;
+}
+
+game-card:hover {
+    opacity: 0.5;
+    color:rgba(250, 235, 215, 0.79);
+    cursor: pointer;
 }
 
 .game-card:active {
@@ -74,19 +82,19 @@ img {
 
 .game-board-easy {
   width: 640px;
-  height: 330px;
+  height: 350px;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
 .game-board-medium {
   width: 640px;
-  height: 450px;
+  height: 480px;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 .game-board-hard {
   width: 640px;
-  height: 700px;
+  height: 520px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -134,4 +142,39 @@ img {
 
 .invisible {
     display: none;
+}
+
+
+#state {
+  background: rgba(255, 255, 255, 0.508);
+  background-image: linear-gradient(to top left, rgba(255, 255, 255, 0.508), #6b58926b);
+  background-size: 400%;
+  width: 45%;
+  line-height: 30px;
+  left:27%;
+  margin: 10px 0 0 10px;
+  border-radius: 7px;
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.829);
+  font-size: 16px;
+  position: relative;
+  perspective: 1000px;
+    top: 50px;
+}
+
+#time {
+  padding-left: 20px;
+}
+
+#time::after {
+  content: " sec";
+}
+
+#score {
+  float: right;
+  padding-right: 20px;
+}
+
+#score::after {
+  content: " points";
 }
