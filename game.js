@@ -1,9 +1,8 @@
 import {initAnimation, animate} from '/animation.js'
-import {menu, gameOver, easy, medium, hard} from "/levels.js";
+// import {setLevel} from "/levels.js";
 
 initAnimation()
 animate()
-menu()
 
 const cards = document.querySelectorAll('.game-card');
 
@@ -66,3 +65,44 @@ function resetBoard() {
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+const easyButton = document.querySelector('#button-easy')
+const mediumButton = document.querySelector('#button-medium')
+const hardButton = document.querySelector('#button-hard')
+const menu = document.querySelector('#menu')
+const gameBoard = document.querySelector('#game-board')
+
+const easyBoard = document.querySelector('#board-easy')
+const mediumBoard = document.querySelector('#board-medium')
+const hardBoard = document.querySelector('#board-hard')
+
+
+export function setLevel(level) {
+    let currentBoard
+    if (level === 'easy') {
+        menu.classList.add("invisible");
+        easyBoard.classList.remove("invisible")
+
+    } else  if (level === 'medium') {
+        menu.classList.add("invisible");
+
+        mediumBoard.classList.remove("invisible")
+        hardBoard.classList.add("invisible");
+    } else if (level === 'hard'){
+        menu.classList.add("invisible");
+        easyBoard.classList.add("invisible");
+        mediumBoard.classList.add("invisible");
+        hardBoard.classList.remove("invisible")
+
+    }
+}
+
+easyButton.addEventListener('click', ()=> {
+    setLevel('easy')
+})
+mediumButton.addEventListener('click', ()=> {
+    setLevel('medium')
+})
+hardButton.addEventListener('click', ()=> {
+    setLevel('hard')
+})
