@@ -3,13 +3,21 @@ import {initAnimation, animate} from '/animation.js'
 
 initAnimation()
 animate()
-
+const easyButton = document.querySelector('#button-easy')
+const mediumButton = document.querySelector('#button-medium')
+const hardButton = document.querySelector('#button-hard')
+const menu = document.querySelector('#menu')
+const score = document.querySelector('#state')
+const buttonMenu = document.querySelector('#button-menu')
+const easyBoard = document.querySelector('#board-easy')
+const mediumBoard = document.querySelector('#board-medium')
+const hardBoard = document.querySelector('#board-hard')
 const cards = document.querySelectorAll('.game-card');
 
 let hasFlipped = false;
 let blockBoard = false;
 let firstCard, secondCard;
-
+let playerScore = 0
 
 function flipCard() {
     if (blockBoard) return;
@@ -32,6 +40,8 @@ function flipCard() {
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
+        playerScore++
+        score.textContent = `Score: ${playerScore}`
         freezeCards();
     } else {
         restoreCards();
@@ -67,29 +77,23 @@ function resetBoard() {
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-const easyButton = document.querySelector('#button-easy')
-const mediumButton = document.querySelector('#button-medium')
-const hardButton = document.querySelector('#button-hard')
-const menu = document.querySelector('#menu')
-const score = document.querySelector('#state')
-const buttonMenu = document.querySelector('#button-menu')
-const easyBoard = document.querySelector('#board-easy')
-const mediumBoard = document.querySelector('#board-medium')
-const hardBoard = document.querySelector('#board-hard')
 
 export function setLevel(level) {
     let currentBoard
     if (level === 'easy') {
+        playerScore = 0
         menu.classList.add("invisible");
         easyBoard.classList.remove("invisible")
         score.classList.remove("invisible")
         buttonMenu.classList.remove("invisible")
     } else  if (level === 'medium') {
+        playerScore = 0
         menu.classList.add("invisible");
         mediumBoard.classList.remove("invisible")
         score.classList.remove("invisible")
         buttonMenu.classList.remove("invisible")
     } else if (level === 'hard'){
+        playerScore = 0
         menu.classList.add("invisible");
         hardBoard.classList.remove("invisible")
         score.classList.remove("invisible")
