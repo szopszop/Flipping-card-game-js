@@ -71,7 +71,7 @@ const easyButton = document.querySelector('#button-easy')
 const mediumButton = document.querySelector('#button-medium')
 const hardButton = document.querySelector('#button-hard')
 const menu = document.querySelector('#menu')
-const gameBoard = document.querySelector('#game-board')
+const score = document.querySelector('#state')
 
 const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
@@ -83,17 +83,18 @@ export function setLevel(level) {
     if (level === 'easy') {
         menu.classList.add("invisible");
         easyBoard.classList.remove("invisible")
+        score.classList.remove("invisible")
+
 
     } else  if (level === 'medium') {
         menu.classList.add("invisible");
-
         mediumBoard.classList.remove("invisible")
-        hardBoard.classList.add("invisible");
+        score.classList.remove("invisible")
+
     } else if (level === 'hard'){
         menu.classList.add("invisible");
-        easyBoard.classList.add("invisible");
-        mediumBoard.classList.add("invisible");
         hardBoard.classList.remove("invisible")
+        score.classList.remove("invisible")
 
     }
 }
@@ -107,3 +108,13 @@ mediumButton.addEventListener('click', ()=> {
 hardButton.addEventListener('click', ()=> {
     setLevel('hard')
 })
+
+// / function getState() {
+
+//   if (click === -1) {
+//     timer = setInterval(function () {
+//       time++;
+//       timeElement.innerHTML = time;
+//     }, 1000);
+//   }
+// }
