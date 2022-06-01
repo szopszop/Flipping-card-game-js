@@ -56,8 +56,7 @@ img {
     height: 90px;
     width: 90px;
     position: relative;
-    border: 1px solid rgba(135, 122, 122, 0.443);
-    box-shadow:1px 1px 2px 1px #bfacbc87;
+    /*box-shadow:1px 1px 2px 1px #bfacbc87;*/
     margin: 5px;
     border-radius: 7px;
     transform: scale(1);
@@ -132,7 +131,7 @@ game-card:hover {
     perspective: 1000px;
 }
 
-.button-menu {
+.button-menu, #button-menu {
     border-radius: 8px;
     background: hsla(303, 69%, 95%, 0.22);
     padding-left:  10px;
@@ -177,4 +176,15 @@ game-card:hover {
 
 #score::after {
   content: " points";
+}
+
+#button-menu {
+    position: absolute;
+    left:87%;
+    top: 50px;
+    border-radius: 8px;
+    background: hsla(303, 69%, 95%, 0.22);
+    padding-left:  10px;
+    padding-right:  10px;
+
 }
