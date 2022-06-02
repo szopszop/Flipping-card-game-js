@@ -81,6 +81,7 @@ export function setLevel(level) {
     menu.classList.add("invisible");
     currentBoard.classList.remove("invisible")
     score.classList.remove("invisible")
+    buttonMenu.classList.remove("invisible")
 }
 
 function randomizeCards() {
