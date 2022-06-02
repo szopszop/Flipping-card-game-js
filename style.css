@@ -190,3 +190,9 @@ game-card:hover {
     padding-right:  10px;
 
 }
+.o {
+    position: relative;
+    top: -7px;
+    height: 70px;
+    width: 70px;
+}
