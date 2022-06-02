@@ -3,6 +3,8 @@ import {initAnimation, animate} from '/animation.js'
 
 initAnimation()
 animate()
+
+const cards = document.querySelectorAll('.game-card');
 const easyButton = document.querySelector('#button-easy')
 const mediumButton = document.querySelector('#button-medium')
 const hardButton = document.querySelector('#button-hard')
@@ -12,18 +14,80 @@ const buttonMenu = document.querySelector('#button-menu')
 const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
-const cards = document.querySelectorAll('.game-card');
+
 
 let hasFlipped = false;
 let blockBoard = false;
 let firstCard, secondCard;
-let playerScore = 0
+let clickSound = new Audio('sound/click.mp3');
+let matchSound = new Audio('sound/match.mp3')
+let badSound = new Audio('sound/bad.mp3')
+let currentBoard;
+let flippedCards = 0;
+let totalCards;
+
+//randomizeCards();
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+easyButton.addEventListener('click', ()=> {
+    setLevel('easy')
+})
+
+mediumButton.addEventListener('click', ()=> {
+    setLevel('medium')
+})
+
+hardButton.addEventListener('click', ()=> {
+    setLevel('hard')
+})
+
+buttonMenu.addEventListener('click', backToMenu)
+
+function backToMenu () {
+    menu.classList.remove("invisible");
+    easyBoard.classList.add("invisible")
+    mediumBoard.classList.add("invisible")
+    hardBoard.classList.add("invisible")
+    score.classList.add("invisible")
+    buttonMenu.classList.add("invisible")
+}
+
+export function setLevel(level) {
+    if (level === 'easy') {
+        currentBoard = easyBoard;
+        totalCards = 18;
+    } else  if (level === 'medium') {
+        currentBoard = mediumBoard;
+        totalCards = 24;
+    } else if (level === 'hard'){
+        currentBoard = hardBoard;
+        totalCards = 30;
+    }
+    menu.classList.add("invisible");
+    currentBoard.classList.remove("invisible")
+    score.classList.remove("invisible")
+}
+
+function randomizeCards() {
+    cards.forEach(card => {
+        let position = Math.floor(Math.random() * 24);
+        card.style.order = position;
+    })
+}
+
+function resetBoard() {
+    [hasFlipped, blockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null]
+}
 
 function flipCard() {
     if (blockBoard) return;
     if (this===firstCard) return;
 
     this.classList.toggle('flip');
+    clickSound.play()
 
     if (!hasFlipped) {
         hasFlipped = true;
@@ -32,17 +96,14 @@ function flipCard() {
         secondCard = this;
         matchCheck();
     }
-    function resetBoard() {
-        [hasFlipped, blockBoard] = [false, false];
-        [firstCard, secondCard] = [null, null];
-    }
+    checkIfGameOver();
 }
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
-        playerScore++
-        score.textContent = `Score: ${playerScore}`
         freezeCards();
+        matchSound.play();
+        flippedCards += 2;
     } else {
         restoreCards();
     }
@@ -60,72 +121,22 @@ function restoreCards() {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
         resetBoard();
-        }, 1200)
+        }, 1200);
+    setTimeout(() =>{
+        badSound.play();
+    }, 1200);
 }
 
-function resetBoard() {
-    [hasFlipped, blockBoard] = [false, false];
-    [firstCard, secondCard] = [null, null]
-}
-
-(function randomizeCards() {
-    cards.forEach(card => {
-        let position = Math.floor(Math.random() * 24);
-        card.style.order = position;
-    })
-})();
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-
-export function setLevel(level) {
-    let currentBoard
-    if (level === 'easy') {
-        playerScore = 0
-        menu.classList.add("invisible");
-        easyBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
-    } else  if (level === 'medium') {
-        playerScore = 0
-        menu.classList.add("invisible");
-        mediumBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
-    } else if (level === 'hard'){
-        playerScore = 0
-        menu.classList.add("invisible");
-        hardBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
+function checkIfGameOver(){
+    if (flippedCards != totalCards) {
+        return
+    } else {
+        gameOver()
     }
 }
 
-easyButton.addEventListener('click', ()=> {
-    setLevel('easy')
-})
-mediumButton.addEventListener('click', ()=> {
-    setLevel('medium')
-})
-hardButton.addEventListener('click', ()=> {
-    setLevel('hard')
-})
-
-function backToMenu () {
+function gameOver(){
     menu.classList.remove("invisible");
-    easyBoard.classList.add("invisible")
-    mediumBoard.classList.add("invisible")
-    hardBoard.classList.add("invisible")
-    score.classList.add("invisible")
-    buttonMenu.classList.add("invisible")
+    currentBoard.classList.add("invisible");
+    score.classList.add("invisible");
 }
-buttonMenu.addEventListener('click', backToMenu)
-// / function getState() {
-
-//   if (click === -1) {
-//     timer = setInterval(function () {
-//       time++;
-//       timeElement.innerHTML = time;
-//     }, 1000);
-//   }
-// }
