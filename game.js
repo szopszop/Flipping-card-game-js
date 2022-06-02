@@ -8,17 +8,19 @@ const cards = document.querySelectorAll('.game-card');
 const easyButton = document.querySelector('#button-easy')
 const mediumButton = document.querySelector('#button-medium')
 const hardButton = document.querySelector('#button-hard')
+const demoButton = document.querySelector('#button-demo')
 const menu = document.querySelector('#menu')
 const score = document.querySelector('#state')
 const buttonMenu = document.querySelector('#button-menu')
 const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
+const demoBoard = document.querySelector('#board-demo')
 const myInterval = setInterval(myTimer, 1000);
 const timer = document.querySelector('#time')
 let playerScore = 0;
-
-
+const playerPoints = document.querySelector('#player-points')
+const buttonToMenu = document.querySelector('#button-back-to-menu')
 let hasFlipped = false;
 let blockBoard = false;
 let firstCard, secondCard;
@@ -47,6 +49,10 @@ hardButton.addEventListener('click', ()=> {
     setLevel('hard')
 })
 
+demoButton.addEventListener('click', ()=> {
+    setLevel('demo')
+})
+buttonToMenu.addEventListener('click', gameOver)
 buttonMenu.addEventListener('click', backToMenu)
 
 
@@ -77,6 +83,10 @@ export function setLevel(level) {
         playerScore = 0
         currentBoard = hardBoard;
         totalCards = 30;
+    } else if (level === 'demo') {
+        playerScore = 0
+        currentBoard = demoBoard;
+        totalCards = 6;
     }
     menu.classList.add("invisible");
     currentBoard.classList.remove("invisible")
@@ -148,12 +158,18 @@ function checkIfGameOver(){
     if (flippedCards != totalCards) {
         return
     } else {
-        gameOver()
+        goodbyeWindow()
     }
 }
 
 function gameOver(){
     menu.classList.remove("invisible");
+    playerPoints.classList.add("invisible")
+}
+
+function goodbyeWindow() {
+    playerPoints.classList.remove("invisible")
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
+
 }

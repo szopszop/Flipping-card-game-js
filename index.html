@@ -12,9 +12,14 @@
     <canvas id="canvas1"></canvas>
     <div id="menu" >
         <h2>Choose level of difficulty:</h2>
+        <button class="button-menu" id="button-demo">Demo</button>
         <button class="button-menu" id="button-easy">Easy</button>
         <button class="button-menu" id="button-medium">Medium</button>
         <button class="button-menu" id="button-hard">Hard</button>
+    </div>
+    <div id="player-points" class="invisible">
+        <h2>Your score: </h2>
+        <button id="button-back-to-menu" class="button-menu">Menu</button>
     </div>
 
     <h1>MEM<img class="o" src="img/codecool.png">RY GAME</h1>
@@ -92,7 +97,33 @@
                 <img class="card-front" src="img/google.png" alt ="Google" />
                 <img class="card-back" src="img/codecool.png" alt="Backed Card" />
             </div>
-        </div>
+            </div>
+        <div class="game-board game-board-demo invisible" id="board-demo">
+                <div class="game-card" id="d1" data-framework="python">
+                    <img class="card-front" src="img/python.png" alt ="Python" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="d2" data-framework="python">
+                    <img class="card-front" src="img/python.png" alt ="Python" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="d3" data-framework="bootstrap">
+                    <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="d4" data-framework="bootstrap">
+                    <img class="card-front" src="img/boot.png" alt ="Bootstrap" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="d5" data-framework="chrome">
+                    <img class="card-front" src="img/chrome.png" alt ="Chrome" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+                <div class="game-card" id="d6" data-framework="chrome">
+                    <img class="card-front" src="img/chrome.png" alt ="Chrome" />
+                    <img class="card-back" src="img/codecool.png" alt="Backed Card" />
+                </div>
+            </div>
         <div class="game-board game-board-medium invisible" id="board-medium">
                 <div class="game-card" id="m1" data-framework="python">
                     <img class="card-front" src="img/python.png" alt ="Python" />

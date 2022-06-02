@@ -96,6 +96,11 @@ game-card:hover {
   height: 520px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+.game-board-demo {
+  width: 640px;
+  height: 100px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
 
 .card-front,
 .card-back {
@@ -119,7 +124,7 @@ game-card:hover {
     height: 100%;
 }
 
-#menu {
+#menu, #player-points {
     top: 200px;
     position: relative;
     display: grid;
