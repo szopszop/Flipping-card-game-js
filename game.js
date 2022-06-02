@@ -22,6 +22,9 @@ let firstCard, secondCard;
 let clickSound = new Audio('sound/click.mp3');
 let matchSound = new Audio('sound/match.mp3')
 let badSound = new Audio('sound/bad.mp3')
+let currentBoard;
+let flippedCards = 0;
+let totalCards;
 
 randomizeCards();
 
