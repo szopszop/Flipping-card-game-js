@@ -65,11 +65,12 @@ function myTimer() {
 
 function backToMenu () {
     menu.classList.remove("invisible");
-    easyBoard.classList.add("invisible")
-    mediumBoard.classList.add("invisible")
-    hardBoard.classList.add("invisible")
-    score.classList.add("invisible")
-    buttonMenu.classList.add("invisible")
+    easyBoard.classList.add("invisible");
+    mediumBoard.classList.add("invisible");
+    hardBoard.classList.add("invisible");
+    demoBoard.classList.add("invisible");
+    score.classList.add("invisible");
+    buttonMenu.classList.add("invisible");
 }
 
 export function setLevel(level) {
