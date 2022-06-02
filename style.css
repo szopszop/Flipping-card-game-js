@@ -169,20 +169,20 @@ game-card:hover {
 }
 
 #time {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 #time::after {
-  content: " sec";
+    content: " sec";
 }
 
 #score {
-  float: right;
-  padding-right: 20px;
+    float: right;
+    padding-right: 20px;
 }
 
 #score::after {
-  content: " points";
+    content: " points";
 }
 
 #button-menu {

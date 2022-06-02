@@ -18,7 +18,11 @@ const hardBoard = document.querySelector('#board-hard')
 const demoBoard = document.querySelector('#board-demo')
 const myInterval = setInterval(myTimer, 1000);
 const timer = document.querySelector('#time')
+const currentScore = document.querySelector('#score')
+
 let playerScore = 0;
+let endScore, endTime;
+
 const playerPoints = document.querySelector('#player-points')
 const buttonToMenu = document.querySelector('#button-back-to-menu')
 let hasFlipped = false;
@@ -55,6 +59,9 @@ demoButton.addEventListener('click', ()=> {
 buttonToMenu.addEventListener('click', gameOver)
 buttonMenu.addEventListener('click', backToMenu)
 
+function interval() {
+    setInterval(myTimer, 1000);
+}
 
 function myTimer() {
     time += 1;
@@ -92,6 +99,7 @@ export function setLevel(level) {
     currentBoard.classList.remove("invisible")
     score.classList.remove("invisible")
     buttonMenu.classList.remove("invisible")
+
 }
 
 function randomizeCards() {
@@ -126,12 +134,14 @@ function flipCard() {
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
-        playerScore++
-        score.textContent= `Score: ${playerScore}`
+        playerScore = playerScore +100;
+        currentScore.textContent= `Score: ${playerScore}`
         freezeCards();
         matchSound.play();
         flippedCards += 2;
     } else {
+        playerScore = playerScore -10;
+        currentScore.textContent= `Score: ${playerScore}`
         restoreCards();
     }
 }
@@ -158,18 +168,42 @@ function checkIfGameOver(){
     if (flippedCards != totalCards) {
         return
     } else {
-        goodbyeWindow()
+        gameOver()
     }
 }
 
-function gameOver(){
+async function gameOver() {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     menu.classList.remove("invisible");
-    playerPoints.classList.add("invisible")
-}
-
-function goodbyeWindow() {
-    playerPoints.classList.remove("invisible")
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
-
+    buttonMenu.classList.add("invisible");
+    endScore = playerScore;
+    playerScore = 0;
+    currentScore.textContent= `Score: ${playerScore}`;
+    clearInterval(myInterval)
+    endTime = time;
+    time = 0;
+    flippedCards = 0;
+    unflipCards();
 }
+
+function unflipCards(){
+
+    cards.forEach(card => {
+        card.classList.add('flip');
+        card.classList.toggle('flip');
+        card.addEventListener('click', flipCard);
+        resetBoard();
+    })
+}
+//
+// function gameOver(){
+//     menu.classList.remove("invisible");
+//     playerPoints.classList.add("invisible")
+// }
+//
+// function goodbyeWindow() {
+//     playerPoints.classList.remove("invisible")
+//     currentBoard.classList.add("invisible");
+//     score.classList.add("invisible");
