@@ -152,8 +152,16 @@ function checkIfGameOver(){
     }
 }
 
-function gameOver(){
+async function gameOver() {
+    await new Promise(resolve => setTimeout(resolve, 3000));
     menu.classList.remove("invisible");
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
+    unflipCards()
+}
+
+function unflipCards(){
+    cards.forEach(card => {
+        card.classList.toggle('flip');
+    })
 }
