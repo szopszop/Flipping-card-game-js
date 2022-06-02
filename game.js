@@ -128,3 +128,17 @@ function restoreCards() {
         badSound.play();
     }, 1200);
 }
+
+function checkIfGameOver(){
+    if (flippedCards != totalCards) {
+        return
+    } else {
+        gameOver()
+    }
+}
+
+function gameOver(){
+    menu.classList.remove("invisible");
+    currentBoard.classList.add("invisible");
+    alert("Game Over");
+}
