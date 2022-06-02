@@ -16,8 +16,10 @@ const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
 const myInterval = setInterval(myTimer, 1000);
 const timer = document.querySelector('#time')
-let playerScore = 0;
+const currentScore = document.querySelector('#score')
 
+let playerScore = 0;
+let endScore, endTime;
 
 let hasFlipped = false;
 let blockBoard = false;
@@ -49,6 +51,9 @@ hardButton.addEventListener('click', ()=> {
 
 buttonMenu.addEventListener('click', backToMenu)
 
+function interval() {
+    setInterval(myTimer, 1000);
+}
 
 function myTimer() {
     time += 1;
@@ -82,6 +87,7 @@ export function setLevel(level) {
     currentBoard.classList.remove("invisible")
     score.classList.remove("invisible")
     buttonMenu.classList.remove("invisible")
+
 }
 
 function randomizeCards() {
@@ -99,7 +105,6 @@ function resetBoard() {
 function flipCard() {
     if (blockBoard) return;
     if (this===firstCard) return;
-    const myInterval = setInterval(myTimer, 1000);
 
     this.classList.toggle('flip');
     clickSound.play()
@@ -116,12 +121,14 @@ function flipCard() {
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
-        playerScore++
-        score.textContent= `Score: ${playerScore}`
+        playerScore = playerScore +100;
+        currentScore.textContent= `Score: ${playerScore}`
         freezeCards();
         matchSound.play();
         flippedCards += 2;
     } else {
+        playerScore = playerScore -10;
+        currentScore.textContent= `Score: ${playerScore}`
         restoreCards();
     }
 }
@@ -157,11 +164,23 @@ async function gameOver() {
     menu.classList.remove("invisible");
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
-    unflipCards()
+    buttonMenu.classList.add("invisible");
+    endScore = playerScore;
+    playerScore = 0;
+    currentScore.textContent= `Score: ${playerScore}`;
+    clearInterval(myInterval)
+    endTime = time;
+    time = 0;
+    flippedCards = 0;
+    unflipCards();
 }
 
 function unflipCards(){
+
     cards.forEach(card => {
+        card.classList.add('flip');
         card.classList.toggle('flip');
+        card.addEventListener('click', flipCard);
+        resetBoard();
     })
 }
