@@ -14,6 +14,9 @@ const buttonMenu = document.querySelector('#button-menu')
 const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
+const myInterval = setInterval(myTimer, 1000);
+const timer = document.querySelector('#time')
+let playerScore = 0;
 
 
 let hasFlipped = false;
@@ -22,6 +25,7 @@ let firstCard, secondCard;
 let clickSound = new Audio('sound/click.mp3');
 let matchSound = new Audio('sound/match.mp3')
 let badSound = new Audio('sound/bad.mp3')
+let time = 0;
 let currentBoard;
 let flippedCards = 0;
 let totalCards;
@@ -45,6 +49,12 @@ hardButton.addEventListener('click', ()=> {
 
 buttonMenu.addEventListener('click', backToMenu)
 
+
+function myTimer() {
+    time += 1;
+    timer.innerHTML = time;
+}
+
 function backToMenu () {
     menu.classList.remove("invisible");
     easyBoard.classList.add("invisible")
@@ -56,12 +66,15 @@ function backToMenu () {
 
 export function setLevel(level) {
     if (level === 'easy') {
+        playerScore = 0
         currentBoard = easyBoard;
         totalCards = 18;
     } else  if (level === 'medium') {
+        playerScore = 0
         currentBoard = mediumBoard;
         totalCards = 24;
     } else if (level === 'hard'){
+        playerScore = 0
         currentBoard = hardBoard;
         totalCards = 30;
     }
@@ -85,6 +98,7 @@ function resetBoard() {
 function flipCard() {
     if (blockBoard) return;
     if (this===firstCard) return;
+    const myInterval = setInterval(myTimer, 1000);
 
     this.classList.toggle('flip');
     clickSound.play()
@@ -101,6 +115,8 @@ function flipCard() {
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
+        playerScore++
+        score.textContent= `Score: ${playerScore}`
         freezeCards();
         matchSound.play();
         flippedCards += 2;
