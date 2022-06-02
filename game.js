@@ -35,6 +35,7 @@ let time = 0;
 let currentBoard;
 let flippedCards = 0;
 let totalCards;
+let myInterval;
 
 //randomizeCards();
 
@@ -59,9 +60,6 @@ demoButton.addEventListener('click', ()=> {
 buttonToMenu.addEventListener('click', gameOver)
 buttonMenu.addEventListener('click', backToMenu)
 
-function interval() {
-    setInterval(myTimer, 1000);
-}
 
 function myTimer() {
     time += 1;
@@ -99,7 +97,7 @@ export function setLevel(level) {
     currentBoard.classList.remove("invisible")
     score.classList.remove("invisible")
     buttonMenu.classList.remove("invisible")
-
+    myInterval = setInterval(myTimer, 1000);
 }
 
 function randomizeCards() {
@@ -117,7 +115,6 @@ function resetBoard() {
 function flipCard() {
     if (blockBoard) return;
     if (this===firstCard) return;
-    const myInterval = setInterval(myTimer, 1000);
 
     this.classList.toggle('flip');
     clickSound.play()
@@ -181,15 +178,15 @@ async function gameOver() {
     endScore = playerScore;
     playerScore = 0;
     currentScore.textContent= `Score: ${playerScore}`;
-    clearInterval(myInterval)
+    clearInterval(myInterval);
     endTime = time;
     time = 0;
+    timer.innerHTML = time;
     flippedCards = 0;
     unflipCards();
 }
 
 function unflipCards(){
-
     cards.forEach(card => {
         card.classList.add('flip');
         card.classList.toggle('flip');
