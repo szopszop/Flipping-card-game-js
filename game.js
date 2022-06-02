@@ -19,11 +19,9 @@ const demoBoard = document.querySelector('#board-demo')
 const timer = document.querySelector('#time')
 const currentScore = document.querySelector('#score')
 const viewScore = document.querySelector('#viewScore')
-let playerScore = 0;
-let endScore, endTime;
-
 const playerPoints = document.querySelector('#player-points')
 const buttonToMenu = document.querySelector('#button-back-to-menu')
+let playerScore = 0;
 let hasFlipped = false;
 let blockBoard = false;
 let firstCard, secondCard;
@@ -36,7 +34,7 @@ let flippedCards = 0;
 let totalCards;
 let myInterval;
 
-//randomizeCards();
+randomizeCards();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
@@ -173,11 +171,8 @@ function gameOver() {
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
     buttonMenu.classList.add("invisible");
-    endScore = playerScore;
     playerScore = 0;
-    currentScore.textContent= `Score: ${playerScore}`;
     clearInterval(myInterval);
-    endTime = time;
     time = 0;
     timer.innerHTML = time;
     flippedCards = 0;
@@ -192,6 +187,7 @@ function unflipCards(){
         card.addEventListener('click', flipCard);
         resetBoard();
     })
+    randomizeCards();
 }
 
 
