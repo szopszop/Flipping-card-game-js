@@ -16,10 +16,9 @@ const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
 const demoBoard = document.querySelector('#board-demo')
-const myInterval = setInterval(myTimer, 1000);
 const timer = document.querySelector('#time')
 const currentScore = document.querySelector('#score')
-
+const viewScore = document.querySelector('#viewScore')
 let playerScore = 0;
 let endScore, endTime;
 
@@ -165,12 +164,11 @@ function checkIfGameOver(){
     if (flippedCards != totalCards) {
         return
     } else {
-        gameOver()
+        goodbyeWindow()
     }
 }
 
-async function gameOver() {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+function gameOver() {
     menu.classList.remove("invisible");
     currentBoard.classList.add("invisible");
     score.classList.add("invisible");
@@ -183,6 +181,7 @@ async function gameOver() {
     time = 0;
     timer.innerHTML = time;
     flippedCards = 0;
+    playerPoints.classList.add('invisible')
     unflipCards();
 }
 
@@ -194,13 +193,14 @@ function unflipCards(){
         resetBoard();
     })
 }
-//
-// function gameOver(){
-//     menu.classList.remove("invisible");
-//     playerPoints.classList.add("invisible")
-// }
-//
-// function goodbyeWindow() {
-//     playerPoints.classList.remove("invisible")
-//     currentBoard.classList.add("invisible");
-//     score.classList.add("invisible");
+
+
+
+async function goodbyeWindow() {
+    await new Promise(resolve => setTimeout(resolve, 800));
+    playerPoints.classList.remove("invisible")
+    currentBoard.classList.add("invisible");
+    score.classList.add("invisible");
+    viewScore.textContent= `Score: ${playerScore}`
+
+}
