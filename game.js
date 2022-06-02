@@ -26,7 +26,7 @@ let currentBoard;
 let flippedCards = 0;
 let totalCards;
 
-randomizeCards();
+//randomizeCards();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
@@ -55,23 +55,19 @@ function backToMenu () {
 }
 
 export function setLevel(level) {
-    let currentBoard
     if (level === 'easy') {
-        menu.classList.add("invisible");
-        easyBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
+        currentBoard = easyBoard;
+        totalCards = 18;
     } else  if (level === 'medium') {
-        menu.classList.add("invisible");
-        mediumBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
+        currentBoard = mediumBoard;
+        totalCards = 24;
     } else if (level === 'hard'){
-        menu.classList.add("invisible");
-        hardBoard.classList.remove("invisible")
-        score.classList.remove("invisible")
-        buttonMenu.classList.remove("invisible")
+        currentBoard = hardBoard;
+        totalCards = 30;
     }
+    menu.classList.add("invisible");
+    currentBoard.classList.remove("invisible")
+    score.classList.remove("invisible")
 }
 
 function randomizeCards() {
@@ -100,12 +96,14 @@ function flipCard() {
         secondCard = this;
         matchCheck();
     }
+    checkIfGameOver();
 }
 
 function matchCheck () {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
         freezeCards();
         matchSound.play();
+        flippedCards += 2;
     } else {
         restoreCards();
     }
@@ -140,5 +138,5 @@ function checkIfGameOver(){
 function gameOver(){
     menu.classList.remove("invisible");
     currentBoard.classList.add("invisible");
-    alert("Game Over");
+    score.classList.add("invisible");
 }
