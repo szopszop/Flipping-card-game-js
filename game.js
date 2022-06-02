@@ -14,7 +14,6 @@ const buttonMenu = document.querySelector('#button-menu')
 const easyBoard = document.querySelector('#board-easy')
 const mediumBoard = document.querySelector('#board-medium')
 const hardBoard = document.querySelector('#board-hard')
-const myInterval = setInterval(myTimer, 1000);
 const timer = document.querySelector('#time')
 const currentScore = document.querySelector('#score')
 
@@ -31,6 +30,7 @@ let time = 0;
 let currentBoard;
 let flippedCards = 0;
 let totalCards;
+let myInterval;
 
 //randomizeCards();
 
@@ -51,9 +51,6 @@ hardButton.addEventListener('click', ()=> {
 
 buttonMenu.addEventListener('click', backToMenu)
 
-function interval() {
-    setInterval(myTimer, 1000);
-}
 
 function myTimer() {
     time += 1;
@@ -87,7 +84,7 @@ export function setLevel(level) {
     currentBoard.classList.remove("invisible")
     score.classList.remove("invisible")
     buttonMenu.classList.remove("invisible")
-
+    myInterval = setInterval(myTimer, 1000);
 }
 
 function randomizeCards() {
@@ -168,15 +165,15 @@ async function gameOver() {
     endScore = playerScore;
     playerScore = 0;
     currentScore.textContent= `Score: ${playerScore}`;
-    clearInterval(myInterval)
+    clearInterval(myInterval);
     endTime = time;
     time = 0;
+    timer.innerHTML = time;
     flippedCards = 0;
     unflipCards();
 }
 
 function unflipCards(){
-
     cards.forEach(card => {
         card.classList.add('flip');
         card.classList.toggle('flip');
