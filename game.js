@@ -100,7 +100,7 @@ export function setLevel(level) {
 
 function randomizeCards() {
     cards.forEach(card => {
-        let position = Math.floor(Math.random() * 24);
+        let position = Math.floor(Math.random() * 36);
         card.style.order = position;
     })
 }
